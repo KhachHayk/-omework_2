@@ -15,7 +15,4 @@ with open('recipes.txt', 'r', encoding='utf-8') as file:
         file.readline()
         cook_book[name_dishes.strip()] = ingredients
 
-for key, value in cook_book.items():
-    print(f' \n{key}')
-    for key in value:
-        print(f'{key}')
+print(cook_book)
