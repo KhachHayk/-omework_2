@@ -15,4 +15,4 @@ with open('recipes.txt', 'r', encoding='utf-8') as file:
         file.readline()
         cook_book[name_dishes.strip()] = ingredients
 
-print(cook_book)
+print(f'cook_book = {cook_book}')

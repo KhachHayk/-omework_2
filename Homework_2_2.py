@@ -1,5 +1,4 @@
 
-
 with open('recipes.txt', 'r', encoding='utf-8') as file:
     cook_book = {}
     for name_dishes in file:
@@ -15,11 +14,21 @@ with open('recipes.txt', 'r', encoding='utf-8') as file:
         file.readline()
         cook_book[name_dishes.strip()] = ingredients
 
-def get_shop_list_by_dishes(name_dishes, person_count):
-    shop_list = {}
-    for dish in name_dishes:
-        for ing in cook_book[dish]:
-            i = {ing['ingredient_name']: {'measure': ing['measure'], 'quantity': ing['quantity'] * person_count}}
-    shop_list.dict.update(i)
-    return shop_list
+# print(f'cook_book = {cook_book}')
 
+def get_shop_list_by_dishes(dishes, person_count):
+    list = {}
+    for dish in dishes:
+        if dish in cook_book:
+            for composition in cook_book[dish]:
+                if composition['ingredient_name'] in list:
+                    list[composition['ingredient_name']]['quantity'] += composition['quantity'] * person_count
+                else:
+                    list[composition['ingredient_name']] = {'measure': composition['measure'],
+                                                  'quantity': (int(composition['quantity']) * person_count)}
+        else:
+            print('В меню блюда в "СТОПЕ"')
+    print(list)
+
+
+get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2)
