@@ -19,4 +19,6 @@ with open('1.txt', 'r', encoding='utf-8') as file_1,\
         final_file.write(str(len(res[1:])))
         final_file.write('\n')
         final_file.writelines(res[1:])
+        final_file.write('\n')
+        final_file.write('\n')
 
